@@ -1,6 +1,6 @@
 ﻿namespace BnsSliderXml_
 {
-    partial class Form1
+    partial class EditorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -118,23 +118,24 @@
             this.gboxLowerBody = new System.Windows.Forms.GroupBox();
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadXmlFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveXmlFile = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
-            this.label36 = new System.Windows.Forms.Label();
+            this.ststrip = new System.Windows.Forms.StatusStrip();
+            this.ststripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.gboxChest.SuspendLayout();
             this.gboxFrame.SuspendLayout();
             this.gboxUpperBody.SuspendLayout();
             this.gboxLowerBody.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.ststrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // txbPelvisWidMin
@@ -929,16 +930,6 @@
             this.label34.TabIndex = 10;
             this.label34.Text = "Min";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(368, 467);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
@@ -953,30 +944,33 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadProfileToolStripMenuItem,
-            this.saveToolStripMenuItem,
+            this.loadXmlFile,
+            this.SaveXmlFile,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // loadProfileToolStripMenuItem
+            // loadXmlFile
             // 
-            this.loadProfileToolStripMenuItem.Name = "loadProfileToolStripMenuItem";
-            this.loadProfileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loadProfileToolStripMenuItem.Text = "Load";
+            this.loadXmlFile.Name = "loadXmlFile";
+            this.loadXmlFile.Size = new System.Drawing.Size(152, 22);
+            this.loadXmlFile.Text = "Load xml file";
+            this.loadXmlFile.Click += new System.EventHandler(this.loadXmlFile_Click);
             // 
-            // saveToolStripMenuItem
+            // SaveXmlFile
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.SaveXmlFile.Name = "SaveXmlFile";
+            this.SaveXmlFile.Size = new System.Drawing.Size(152, 22);
+            this.SaveXmlFile.Text = "Save";
+            this.SaveXmlFile.Click += new System.EventHandler(this.SaveXmlFile_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // panel3
             // 
@@ -1016,40 +1010,44 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(231, 467);
+            this.btnReset.Location = new System.Drawing.Point(343, 467);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.Size = new System.Drawing.Size(100, 60);
             this.btnReset.TabIndex = 11;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // label36
+            // ststrip
             // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(241, 39);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(41, 13);
-            this.label36.TabIndex = 14;
-            this.label36.Text = "label36";
+            this.ststrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ststripLabel});
+            this.ststrip.Location = new System.Drawing.Point(0, 538);
+            this.ststrip.Name = "ststrip";
+            this.ststrip.Size = new System.Drawing.Size(459, 22);
+            this.ststrip.TabIndex = 15;
+            this.ststrip.Text = "ststrip";
             // 
-            // Form1
+            // ststripLabel
+            // 
+            this.ststripLabel.Name = "ststripLabel";
+            this.ststripLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 546);
-            this.Controls.Add(this.label36);
+            this.ClientSize = new System.Drawing.Size(459, 560);
+            this.Controls.Add(this.ststrip);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.gboxFrame);
             this.Controls.Add(this.gboxUpperBody);
             this.Controls.Add(this.gboxLowerBody);
             this.Controls.Add(this.gboxChest);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "EditorForm";
+            this.Text = "XmlSlider Editor";
             this.gboxChest.ResumeLayout(false);
             this.gboxChest.PerformLayout();
             this.gboxFrame.ResumeLayout(false);
@@ -1062,6 +1060,8 @@
             this.menuStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.ststrip.ResumeLayout(false);
+            this.ststrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1158,17 +1158,17 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadXmlFile;
+        private System.Windows.Forms.ToolStripMenuItem SaveXmlFile;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.StatusStrip ststrip;
+        private System.Windows.Forms.ToolStripStatusLabel ststripLabel;
     }
 }
 

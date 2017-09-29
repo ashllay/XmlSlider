@@ -1,0 +1,308 @@
+﻿using System;
+using System.Windows.Forms;
+using System.Xml;
+
+namespace BnsSliderXml_
+{
+    public partial class EditorForm : Form
+    {
+        private string Race, Sex;
+        string sMin = "-1.00";
+        string sMax = "1.00";
+
+        OpenFileDialog OpenXmlFile = new OpenFileDialog();
+        string xmlFile;
+
+        public EditorForm()
+        {
+            InitializeComponent();
+        }
+
+        void txBoxSet()
+        {
+            //max
+            TextBox[] MaxTarray = {
+                txbPelvisWidMax, txbNekThicMax, txbNeckLenMax, txbShoulderHeiMax, txbShoulderWidMax,
+                txbShoulderSizMax, txbArmThicMax, txbArmLenMax, txbHandSizMax, txbHandLenMax,
+                txbFootSizMax, txbPelvisThickMax, txbBuildMax, txbHeigthMax, txbHeadSizMax,
+                txbChestHeiMax, txbChestWidMax, txbChestSizMax, txbHeadWidMax, txbWaisThicMax,
+                txbWaisLenMax, txbThigthWidMax, txbCalfWidMax, txbThighLenMax, txbCalfLenMax,
+                txbTorsoSizMax
+            };
+            foreach (TextBox t in MaxTarray)
+            {
+                t.Text = sMax;
+            }
+            //min
+            TextBox[] MinTarray = {
+                txbPelvisWidMin, txbNeckLenMin, txbNekThicMin, txbShoulderHeiMin, txbShoulderWidMin,
+                txbShoulderSizMin, txbArmThicMin, txbArmLenMin, txbHandSizMin, txbHandLenMin,
+                txbFootSizMin, txbPelvisThickMin, txbBuildMin, txbHeigthMin, txbHeadSizMin,
+                txbChestHeiMin, txbChestWidMin, txbChestSizMin, txbHeadWidMin, txbWaisThicMin,
+                txbWaisLenMin, txbThigthWidMin, txbCalfWidMin, txbThighLenMin, txbCalfLenMin,
+                txbTorsoSizMin
+            };
+
+            foreach (TextBox t in MinTarray)
+            {
+                t.Text = sMin;
+            }
+        }
+        void XmlRead(string xRace, string xSex)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreComments = true;//  
+
+            XmlReader creader = XmlReader.Create(xmlFile, settings);
+            xmlDoc.Load(creader);
+
+            XmlNodeList nodeList = xmlDoc.SelectSingleNode("table").ChildNodes;//
+
+            foreach (XmlNode xn in nodeList)// 
+            {
+                XmlElement xe = (XmlElement)xn;//
+
+                if (xe.GetAttribute("race") == xRace && xe.GetAttribute("sex") == xSex && xe.GetAttribute("table-type") == "bodycustom")// 
+                {
+                    try
+                    {
+                        //max
+                        txbPelvisWidMax.Text = xe.GetAttribute("body-custom-max-1");
+                        txbNekThicMax.Text = xe.GetAttribute("body-custom-max-10");
+                        txbNeckLenMax.Text = xe.GetAttribute("body-custom-max-11");
+                        txbShoulderHeiMax.Text = xe.GetAttribute("body-custom-max-12");
+                        txbShoulderWidMax.Text = xe.GetAttribute("body-custom-max-13");
+                        txbShoulderSizMax.Text = xe.GetAttribute("body-custom-max-14");
+                        txbArmThicMax.Text = xe.GetAttribute("body-custom-max-15");
+                        txbArmLenMax.Text = xe.GetAttribute("body-custom-max-16");
+                        txbHandSizMax.Text = xe.GetAttribute("body-custom-max-17");
+                        txbHandLenMax.Text = xe.GetAttribute("body-custom-max-18");
+                        txbFootSizMax.Text = xe.GetAttribute("body-custom-max-19");
+                        txbPelvisThickMax.Text = xe.GetAttribute("body-custom-max-2");
+                        txbBuildMax.Text = xe.GetAttribute("body-custom-max-20");
+                        txbHeigthMax.Text = xe.GetAttribute("body-custom-max-21");
+                        txbHeadSizMax.Text = xe.GetAttribute("body-custom-max-22");
+                        txbChestHeiMax.Text = xe.GetAttribute("body-custom-max-23");
+                        txbChestWidMax.Text = xe.GetAttribute("body-custom-max-24");
+                        txbChestSizMax.Text = xe.GetAttribute("body-custom-max-25");
+                        txbHeadWidMax.Text = xe.GetAttribute("body-custom-max-26");
+                        txbWaisThicMax.Text = xe.GetAttribute("body-custom-max-3");
+                        txbWaisLenMax.Text = xe.GetAttribute("body-custom-max-4");
+                        txbThigthWidMax.Text = xe.GetAttribute("body-custom-max-5");
+                        txbCalfWidMax.Text = xe.GetAttribute("body-custom-max-6");
+                        txbThighLenMax.Text = xe.GetAttribute("body-custom-max-7");
+                        txbCalfLenMax.Text = xe.GetAttribute("body-custom-max-8");
+                        txbTorsoSizMax.Text = xe.GetAttribute("body-custom-max-9");
+                        //min
+                        txbPelvisWidMin.Text = xe.GetAttribute("body-custom-min-1");
+                        txbNekThicMin.Text = xe.GetAttribute("body-custom-min-10");
+                        txbNeckLenMin.Text = xe.GetAttribute("body-custom-min-11");
+                        txbShoulderHeiMin.Text = xe.GetAttribute("body-custom-min-12");
+                        txbShoulderWidMin.Text = xe.GetAttribute("body-custom-min-13");
+                        txbShoulderSizMin.Text = xe.GetAttribute("body-custom-min-14");
+                        txbArmThicMin.Text = xe.GetAttribute("body-custom-min-15");
+                        txbArmLenMin.Text = xe.GetAttribute("body-custom-min-16");
+                        txbHandSizMin.Text = xe.GetAttribute("body-custom-min-17");
+                        txbHandLenMin.Text = xe.GetAttribute("body-custom-min-18");
+                        txbFootSizMin.Text = xe.GetAttribute("body-custom-min-19");
+                        txbPelvisThickMin.Text = xe.GetAttribute("body-custom-min-2");
+                        txbBuildMin.Text = xe.GetAttribute("body-custom-min-20");
+                        txbHeigthMin.Text = xe.GetAttribute("body-custom-min-21");
+                        txbHeadSizMin.Text = xe.GetAttribute("body-custom-min-22");
+                        txbChestHeiMin.Text = xe.GetAttribute("body-custom-min-23");
+                        txbChestWidMin.Text = xe.GetAttribute("body-custom-min-24");
+                        txbChestSizMin.Text = xe.GetAttribute("body-custom-min-25");
+                        txbHeadWidMin.Text = xe.GetAttribute("body-custom-min-26");
+                        txbWaisThicMin.Text = xe.GetAttribute("body-custom-min-3");
+                        txbWaisLenMin.Text = xe.GetAttribute("body-custom-min-4");
+                        txbThigthWidMin.Text = xe.GetAttribute("body-custom-min-5");
+                        txbCalfWidMin.Text = xe.GetAttribute("body-custom-min-6");
+                        txbThighLenMin.Text = xe.GetAttribute("body-custom-min-7");
+                        txbCalfLenMin.Text = xe.GetAttribute("body-custom-min-8");
+                        txbTorsoSizMin.Text = xe.GetAttribute("body-custom-min-9");
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.ToString());
+                    }
+                }
+            }
+            creader.Close();
+        }
+
+        void XmlWrite(string xFile, string xRace, string xSex)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreComments = true;//  
+
+            XmlReader creader = XmlReader.Create(xFile, settings);
+            xmlDoc.Load(creader);
+
+            XmlNodeList nodeList = xmlDoc.SelectSingleNode("table").ChildNodes;//
+
+            foreach (XmlNode xn in nodeList)// 
+            {
+                XmlElement xe2 = (XmlElement)xn;//
+
+                if (xe2.GetAttribute("race") == xRace && xe2.GetAttribute("sex") == xSex && xe2.GetAttribute("table-type") == "bodycustom")// 
+                {
+                    try
+                    {
+                        //max
+                        xe2.SetAttribute("body-custom-max-1", txbPelvisWidMax.Text);
+                        xe2.SetAttribute("body-custom-max-10", txbNekThicMax.Text);
+                        xe2.SetAttribute("body-custom-max-11", txbNeckLenMax.Text);
+                        xe2.SetAttribute("body-custom-max-12", txbShoulderHeiMax.Text);
+                        xe2.SetAttribute("body-custom-max-13", txbShoulderWidMax.Text);
+                        xe2.SetAttribute("body-custom-max-14", txbShoulderSizMax.Text);
+                        xe2.SetAttribute("body-custom-max-15", txbArmThicMax.Text);
+                        xe2.SetAttribute("body-custom-max-16", txbArmLenMax.Text);
+                        xe2.SetAttribute("body-custom-max-17", txbHandSizMax.Text);
+                        xe2.SetAttribute("body-custom-max-18", txbHandLenMax.Text);
+                        xe2.SetAttribute("body-custom-max-19", txbFootSizMax.Text);
+                        xe2.SetAttribute("body-custom-max-2", txbPelvisThickMax.Text);
+                        xe2.SetAttribute("body-custom-max-20", txbBuildMax.Text);
+                        xe2.SetAttribute("body-custom-max-21", txbHeigthMax.Text);
+                        xe2.SetAttribute("body-custom-max-22", txbHeadSizMax.Text);
+                        xe2.SetAttribute("body-custom-max-23", txbChestHeiMax.Text);
+                        xe2.SetAttribute("body-custom-max-24", txbChestWidMax.Text);
+                        xe2.SetAttribute("body-custom-max-25", txbChestSizMax.Text);
+                        xe2.SetAttribute("body-custom-max-26", txbHeadWidMax.Text);
+                        xe2.SetAttribute("body-custom-max-3", txbWaisThicMax.Text);
+                        xe2.SetAttribute("body-custom-max-4", txbWaisLenMax.Text);
+                        xe2.SetAttribute("body-custom-max-5", txbThigthWidMax.Text);
+                        xe2.SetAttribute("body-custom-max-6", txbCalfWidMax.Text);
+                        xe2.SetAttribute("body-custom-max-7", txbThighLenMax.Text);
+                        xe2.SetAttribute("body-custom-max-8", txbCalfLenMax.Text);
+                        xe2.SetAttribute("body-custom-max-9", txbTorsoSizMax.Text);
+                        //min
+                        xe2.SetAttribute("body-custom-min-1", txbPelvisWidMin.Text);
+                        xe2.SetAttribute("body-custom-min-10", txbNekThicMin.Text);
+                        xe2.SetAttribute("body-custom-min-11", txbNeckLenMin.Text);
+                        xe2.SetAttribute("body-custom-min-12", txbShoulderHeiMin.Text);
+                        xe2.SetAttribute("body-custom-min-13", txbShoulderWidMin.Text);
+                        xe2.SetAttribute("body-custom-min-14", txbShoulderSizMin.Text);
+                        xe2.SetAttribute("body-custom-min-15", txbArmThicMin.Text);
+                        xe2.SetAttribute("body-custom-min-16", txbArmLenMin.Text);
+                        xe2.SetAttribute("body-custom-min-17", txbHandSizMin.Text);
+                        xe2.SetAttribute("body-custom-min-18", txbHandLenMin.Text);
+                        xe2.SetAttribute("body-custom-min-19", txbFootSizMin.Text);
+                        xe2.SetAttribute("body-custom-min-2", txbPelvisThickMin.Text);
+                        xe2.SetAttribute("body-custom-min-20", txbBuildMin.Text);
+                        xe2.SetAttribute("body-custom-min-21", txbHeigthMin.Text);
+                        xe2.SetAttribute("body-custom-min-22", txbHeadSizMin.Text);
+                        xe2.SetAttribute("body-custom-min-23", txbChestHeiMin.Text);
+                        xe2.SetAttribute("body-custom-min-24", txbChestWidMin.Text);
+                        xe2.SetAttribute("body-custom-min-25", txbChestSizMin.Text);
+                        xe2.SetAttribute("body-custom-min-26", txbHeadWidMin.Text);
+                        xe2.SetAttribute("body-custom-min-3", txbWaisThicMin.Text);
+                        xe2.SetAttribute("body-custom-min-4", txbWaisLenMin.Text);
+                        xe2.SetAttribute("body-custom-min-5", txbThigthWidMin.Text);
+                        xe2.SetAttribute("body-custom-min-6", txbCalfWidMin.Text);
+                        xe2.SetAttribute("body-custom-min-7", txbThighLenMin.Text);
+                        xe2.SetAttribute("body-custom-min-8", txbCalfLenMin.Text);
+                        xe2.SetAttribute("body-custom-min-9", txbTorsoSizMin.Text);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.ToString());
+                    }
+                }
+            }
+            creader.Close();
+            xmlDoc.Save(xmlFile);
+            ststripLabel.Text = "Xml File Saved!";
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txBoxSet();
+            ststripLabel.Text = "Values reseted!";
+        }
+
+        private void loadXmlFile_Click(object sender, EventArgs e)
+        {
+            if (OpenXmlFile.ShowDialog() != DialogResult.OK)
+                return;
+            else
+            {
+                xmlFile = OpenXmlFile.FileName;
+                ststripLabel.Text = "Xml File loaded!";
+            }   
+        }
+
+        private void SaveXmlFile_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(xmlFile))
+                XmlWrite(xmlFile, Race, Sex);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //"Yun",
+            //"Gon Female",
+            //"Lyn Female",
+            //"Jin Female",
+            //"Gon Male",
+            //"Lyn Male",
+            //"Jin Male"
+            //Yun - race = "건" sex = "여"
+            //GonF - race = "곤" sex = "여"
+            //JinF - race = "진" sex = "여"
+            //LynF - race = "린" sex = "여"
+            //GonM - race = "곤" sex = "남"
+            //JinM - race = "진" sex = "남"
+            //LynM - race = "린" sex = "남
+            if (!string.IsNullOrEmpty(xmlFile))
+            {
+                switch (comboBox1.SelectedItem.ToString())
+                {
+                    //female
+                    case "Yun":
+                        Race = "건";
+                        Sex = "여";
+                        break;
+                    case "Gon Female":
+                        Race = "곤";
+                        Sex = "여";
+                        break;
+                    case "Lyn Female":
+                        Race = "린";
+                        Sex = "여";
+                        break;
+                    case "Jin Female":
+                        Race = "진";
+                        Sex = "여";
+                        break;
+                    //male
+                    case "Gon Male":
+                        Race = "곤";
+                        Sex = "남";
+                        break;
+                    case "Lyn Male":
+                        Race = "린";
+                        Sex = "남";
+                        break;
+                    case "Jin Male":
+                        Race = "진";
+                        Sex = "남";
+                        break;
+                    default:
+                        break;
+
+                }
+                XmlRead(Race, Sex);
+                ststripLabel.Text = Race + Sex;
+            }
+            else
+                MessageBox.Show("Select xml file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+}
